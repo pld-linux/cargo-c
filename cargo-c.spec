@@ -23,7 +23,14 @@ BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rust
 BuildRequires:	zlib-devel
+ExclusiveArch:	%{ix86} %{x8664} x32 aarch64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%ifarch	x32
+%define		target_opt	--target x86_64-unknown-linux-gnux32
+%else
+%define		target_opt	%{nil}
+%endif
 
 %description
 Cargo subcommands to build and install C-ABI compatible dynamic and
@@ -37,7 +44,7 @@ bibliotek dynamicznych i statycznych.
 %setup -q -b1
 
 # bundled:
-# curl 1.71.1 vendor/curl-sys/curl
+# curl 7.71.1 vendor/curl-sys/curl
 # libgit2 1.0.1 vendor/libgit2-sys/libgit2
 # nghttp2 1.33.90 vendor/libnghttp2-sys/nghttp2 (but system nghttp2 is not supported in rust)
 # libssh 1.9.0 vendor/libssh2-sys/libssh2
@@ -59,14 +66,17 @@ EOF
 export CARGO_HOME="$(pwd)/.cargo"
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 
-cargo -vv build --release --frozen
+cargo -vv build --release --frozen %{target_opt}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 export CARGO_HOME="$(pwd)/.cargo"
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 
-cargo -vv install --frozen --path . --root $RPM_BUILD_ROOT%{_prefix}
+cargo -vv install --frozen %{target_opt} \
+	--path . \
+	--root $RPM_BUILD_ROOT%{_prefix}
+
 %{__rm} $RPM_BUILD_ROOT%{_prefix}/.crates*
 
 %clean
