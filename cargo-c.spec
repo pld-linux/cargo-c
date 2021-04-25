@@ -26,6 +26,7 @@ BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664} x32 aarch64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_debugsource_packages	0
 %ifarch	x32
 %define		target_opt	--target x86_64-unknown-linux-gnux32
 %else
