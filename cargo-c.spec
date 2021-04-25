@@ -73,6 +73,7 @@ cargo -vv build --release --frozen %{target_opt}
 rm -rf $RPM_BUILD_ROOT
 export CARGO_HOME="$(pwd)/.cargo"
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
+export PKG_CONFIG_ALLOW_CROSS=1
 
 cargo -vv install --frozen %{target_opt} \
 	--path . \
