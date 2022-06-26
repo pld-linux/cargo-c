@@ -1,19 +1,19 @@
 Summary:	Helper program to build and install C-like libraries
 Summary(pl.UTF-8):	Program pomocniczy do budowania i instalowania bibliotek w stylu C
 Name:		cargo-c
-Version:	0.9.5
+Version:	0.9.10
 Release:	1
 License:	MIT
 Group:		Development/Tools
 #Source0Download: https://github.com/lu-zero/cargo-c/releases
 Source0:	https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	f1bdfcaef0eaa49a34daf851992fbe36
+# Source0-md5:	e1efdfc1b99b871873e5494f2d1e0d2e
 # cd %{name}-%{version}
 # cargo vendor
 # cd ..
 # tar cJf cargo-c-crates-%{version}.tar.xz %{name}-%{version}/{vendor,Cargo.lock}
 Source1:	%{name}-crates-%{version}.tar.xz
-# Source1-md5:	c68e28d4351e7cef51dbe6352216cb9e
+# Source1-md5:	d1f41556287ee95e338fbb8ec4060d68
 URL:		https://github.com/lu-zero/cargo-c
 BuildRequires:	cargo >= 0.45
 BuildRequires:	curl-devel
@@ -45,10 +45,10 @@ bibliotek dynamicznych i statycznych.
 %setup -q -b1
 
 # bundled:
-# curl 7.71.1 vendor/curl-sys/curl
-# libgit2 1.0.1 vendor/libgit2-sys/libgit2
-# nghttp2 1.33.90 vendor/libnghttp2-sys/nghttp2 (but system nghttp2 is not supported in rust)
-# libssh 1.9.0 vendor/libssh2-sys/libssh2
+# curl 7.83.1 vendor/curl-sys/curl
+# libgit2 1.5.0-alpha vendor/libgit2-sys/libgit2
+# nghttp2 1.45.0 vendor/libnghttp2-sys/nghttp2 (but system nghttp2 is not supported in rust)
+# libssh 1.10-dev vendor/libssh2-sys/libssh2
 # zlib 1.2.11 vendor/libz-sys/src/zlib
 
 # use our offline registry
