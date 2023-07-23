@@ -21,6 +21,7 @@ BuildRequires:	curl-devel
 BuildRequires:	libssh2-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 2.005
 BuildRequires:	rust
 BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664} x32 aarch64
