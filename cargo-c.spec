@@ -23,6 +23,8 @@ BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.005
 BuildRequires:	rust
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664} x32 aarch64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
