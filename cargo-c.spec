@@ -17,6 +17,7 @@ Source1:	%{name}-crates-%{version}.tar.xz
 URL:		https://github.com/lu-zero/cargo-c
 BuildRequires:	cargo >= 0.45
 BuildRequires:	curl-devel
+BuildRequires:	libgit2-devel < 1.7.0
 BuildRequires:	libgit2-devel >= 1.6.4
 BuildRequires:	libssh2-devel
 BuildRequires:	openssl-devel
