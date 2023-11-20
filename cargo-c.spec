@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	system_libgit2		# use system installed libgit2
+
 Summary:	Helper program to build and install C-like libraries
 Summary(pl.UTF-8):	Program pomocniczy do budowania i instalowania bibliotek w stylu C
 Name:		cargo-c
@@ -17,8 +21,10 @@ Source1:	%{name}-crates-%{version}.tar.xz
 URL:		https://github.com/lu-zero/cargo-c
 BuildRequires:	cargo >= 0.45
 BuildRequires:	curl-devel
+%if %{with system_libgit2}
 BuildRequires:	libgit2-devel < 1.7.0
 BuildRequires:	libgit2-devel >= 1.6.4
+%endif
 BuildRequires:	libssh2-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
@@ -27,7 +33,7 @@ BuildRequires:	rust
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	libgit2 >= 1.6.4
+%{?with_system_libgit2:Requires:	libgit2 >= 1.6.4}
 ExclusiveArch:	%{rust_arches}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
