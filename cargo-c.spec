@@ -37,13 +37,6 @@ BuildRequires:	zlib-devel
 ExclusiveArch:	%{rust_arches}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_debugsource_packages	0
-%ifarch	x32
-%define		target_opt	--target x86_64-unknown-linux-gnux32
-%else
-%define		target_opt	%{nil}
-%endif
-
 %description
 Cargo subcommands to build and install C-ABI compatible dynamic and
 static libraries.
@@ -77,17 +70,15 @@ EOF
 %build
 export CARGO_HOME="$(pwd)/.cargo"
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
-export PKG_CONFIG_ALLOW_CROSS=1
 
-cargo -vv build --release --frozen %{target_opt}
+%cargo_build --frozen
 
 %install
 rm -rf $RPM_BUILD_ROOT
 export CARGO_HOME="$(pwd)/.cargo"
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
-export PKG_CONFIG_ALLOW_CROSS=1
 
-cargo -vv install --frozen %{target_opt} \
+%cargo_install --frozen \
 	--path . \
 	--root $RPM_BUILD_ROOT%{_prefix}
 
