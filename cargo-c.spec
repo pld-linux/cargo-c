@@ -37,6 +37,8 @@ BuildRequires:	zlib-devel
 ExclusiveArch:	%{rust_arches}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_enable_debug_packages	0
+
 %description
 Cargo subcommands to build and install C-ABI compatible dynamic and
 static libraries.
