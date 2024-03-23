@@ -5,25 +5,25 @@
 Summary:	Helper program to build and install C-like libraries
 Summary(pl.UTF-8):	Program pomocniczy do budowania i instalowania bibliotek w stylu C
 Name:		cargo-c
-Version:	0.9.30
+Version:	0.9.31
 Release:	1
 License:	MIT
 Group:		Development/Tools
 #Source0Download: https://github.com/lu-zero/cargo-c/releases
 Source0:	https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c2ce187e06603f9fb2e150df7f280ef6
+# Source0-md5:	f7e624cdaa1f6b526a2d18c9869396fd
 # cd %{name}-%{version}
 # cargo vendor
 # cd ..
 # tar cJf cargo-c-crates-%{version}.tar.xz %{name}-%{version}/{vendor,Cargo.lock}
 Source1:	%{name}-crates-%{version}.tar.xz
-# Source1-md5:	71077d84a5365cc382fbf8557fc73a42
+# Source1-md5:	3f22dcb9762cf4824627381553accb38
 URL:		https://github.com/lu-zero/cargo-c
 BuildRequires:	cargo >= 0.45
 BuildRequires:	curl-devel
 %if %{with system_libgit2}
 BuildRequires:	libgit2-devel < 1.8.0
-BuildRequires:	libgit2-devel >= 1.7.1
+BuildRequires:	libgit2-devel >= 1.7.2
 %endif
 BuildRequires:	libssh2-devel
 BuildRequires:	openssl-devel
@@ -33,7 +33,7 @@ BuildRequires:	rust
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-%{?with_system_libgit2:Requires:	libgit2 >= 1.7.1}
+%{?with_system_libgit2:Requires:	libgit2 >= 1.7.2}
 ExclusiveArch:	%{rust_arches}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
