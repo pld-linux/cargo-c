@@ -5,19 +5,19 @@
 Summary:	Helper program to build and install C-like libraries
 Summary(pl.UTF-8):	Program pomocniczy do budowania i instalowania bibliotek w stylu C
 Name:		cargo-c
-Version:	0.10.7
+Version:	0.10.8
 Release:	1
 License:	MIT
 Group:		Development/Tools
 #Source0Download: https://github.com/lu-zero/cargo-c/releases
 Source0:	https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	cae2d454deecddfcad82732abba982ab
+# Source0-md5:	4a443cda6cd9abc74fb788ad2c7a5e86
 # cd %{name}-%{version}
 # cargo vendor
 # cd ..
 # tar cJf cargo-c-crates-%{version}.tar.xz %{name}-%{version}/{vendor,Cargo.lock}
 Source1:	%{name}-crates-%{version}.tar.xz
-# Source1-md5:	a8bf8aa772e664c749a54fffd97182e6
+# Source1-md5:	08c83e75d34efaeb5e9a5fbf4e092a8b
 URL:		https://github.com/lu-zero/cargo-c
 BuildRequires:	cargo >= 0.45
 BuildRequires:	curl-devel
