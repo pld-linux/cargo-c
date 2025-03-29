@@ -84,8 +84,6 @@ export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	--path . \
 	--root $RPM_BUILD_ROOT%{_prefix}
 
-%{__rm} $RPM_BUILD_ROOT%{_prefix}/.crates*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
