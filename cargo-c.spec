@@ -28,11 +28,12 @@ BuildRequires:	libgit2-devel >= 1.8.1
 BuildRequires:	libssh2-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 2.005
+BuildRequires:	rpmbuild(macros) >= 2.050
 BuildRequires:	rust >= 1.78
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+%{?rust_req}
 %{?with_system_libgit2:Requires:	libgit2 >= 1.8.1}
 ExclusiveArch:	%{rust_arches}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
